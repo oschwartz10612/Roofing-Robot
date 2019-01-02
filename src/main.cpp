@@ -25,35 +25,9 @@ MultiStepper steppers;
 
 long positions[3];
 
-void setup() {
-  SabertoothTXPinSerial.begin(9600);
-  stepper1.setMaxSpeed(35);
-  stepper1.setAcceleration(10);
-  stepper1.setEnablePin(25);
-  stepper1.setMinPulseWidth(60);
+#define POWER 50
 
-  stepper2.setMaxSpeed(35);
-  stepper2.setAcceleration(10);
-  stepper2.setEnablePin(29);
-  stepper2.setMinPulseWidth(60);
-
-  stepper3.setMaxSpeed(35);
-  stepper3.setAcceleration(10);
-  stepper3.setEnablePin(33);
-  stepper3.setMinPulseWidth(60);
-
-  steppers.addStepper(stepper1);
-  steppers.addStepper(stepper2);
-  steppers.addStepper(stepper3);
-
-
-}
-
-void loop() {
-
-}
-
-void eject() {
+void ejectTile() {
   positions[0] = 150;
   positions[1] = 370;
   positions[2] = 470;
@@ -77,4 +51,37 @@ void eject() {
   stepper1.setCurrentPosition(0);
   stepper2.setCurrentPosition(0);
   stepper3.setCurrentPosition(0);
+}
+
+void setup() {
+  SabertoothTXPinSerial.begin(9600);
+  stepper1.setMaxSpeed(35);
+  stepper1.setAcceleration(10);
+  stepper1.setEnablePin(25);
+  stepper1.setMinPulseWidth(60);
+
+  stepper2.setMaxSpeed(35);
+  stepper2.setAcceleration(10);
+  stepper2.setEnablePin(29);
+  stepper2.setMinPulseWidth(60);
+
+  stepper3.setMaxSpeed(35);
+  stepper3.setAcceleration(10);
+  stepper3.setEnablePin(33);
+  stepper3.setMinPulseWidth(60);
+
+  steppers.addStepper(stepper1);
+  steppers.addStepper(stepper2);
+  steppers.addStepper(stepper3);
+
+  ST.motor(1, POWER);
+  ST.motor(2, POWER);
+  ejectTile();
+  delay(1000);
+  ST.motor(1, 0);
+  ST.motor(2, 0);
+}
+
+void loop() {
+  //code executed in setup()
 }
