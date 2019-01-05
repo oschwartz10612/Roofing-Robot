@@ -1,42 +1,42 @@
--I/home/owen/.platformio/packages/framework-arduinoavr/cores/arduino
--I/home/owen/.platformio/packages/framework-arduinoavr/variants/mega
--I/home/owen/Desktop/Roofing-Robot/lib/AccelStepper-1.58.0/src
--I/home/owen/Desktop/Roofing-Robot/lib/SabertoothSimplified
--I/home/owen/Desktop/Roofing-Robot/lib/Sabertooth
--I/home/owen/Desktop/Roofing-Robot/lib/SyRenSimplified
--I/home/owen/Desktop/Roofing-Robot/lib/USBSabertooth
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Adafruit_CircuitPlayground
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Adafruit_CircuitPlayground/utility
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Bridge/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Esplora/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Ethernet/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Firmata
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Firmata/utility
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/GSM/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Keyboard/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/LiquidCrystal/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Mouse/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/RobotIRremote/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Robot_Control/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Robot_Motor/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/SD/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Servo/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/SpacebrewYun/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Stepper/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/TFT/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/Temboo/src
--I/home/owen/.platformio/packages/framework-arduinoavr/libraries/WiFi/src
--I/home/owen/.platformio/packages/toolchain-atmelavr/avr/include
--I/home/owen/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
--I/home/owen/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
--I/home/owen/.platformio/packages/tool-unity
--I/home/owen/Desktop/Roofing-Robot/include
--I/home/owen/Desktop/Roofing-Robot/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/cores/arduino
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/variants/mega
+-I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/AccelStepper-1.58.0/src
+-I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/SabertoothSimplified
+-I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/Sabertooth
+-I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/SyRenSimplified
+-I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/USBSabertooth
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Adafruit_CircuitPlayground
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Adafruit_CircuitPlayground/utility
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Bridge/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Esplora/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Ethernet/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Firmata
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Firmata/utility
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/GSM/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Keyboard/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/LiquidCrystal/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Mouse/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/RobotIRremote/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Robot_Control/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Robot_Motor/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/SD/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Servo/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/SpacebrewYun/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Stepper/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/TFT/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/Temboo/src
+-I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/WiFi/src
+-I/Users/owenschwartz/.platformio/packages/toolchain-atmelavr/avr/include
+-I/Users/owenschwartz/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
+-I/Users/owenschwartz/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
+-I/Users/owenschwartz/.platformio/packages/tool-unity
+-I/Users/owenschwartz/Google Drive/Documents/robot/code/include
+-I/Users/owenschwartz/Google Drive/Documents/robot/code/src
 -DPLATFORMIO=30603
 -DARDUINO_AVR_MEGA2560
 -DF_CPU=16000000L

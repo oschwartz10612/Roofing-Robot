@@ -26,6 +26,15 @@ MultiStepper steppers;
 long positions[3];
 
 #define POWER 50
+#define SPEED 35
+#define PULSEWIDTH 60
+#define ACCELERATION 10
+#define MTR1RELAY 35
+#define MTR2RELAY 36
+#define RELAYGND 34
+#define RELAY5V 37
+#define BUTTON 38
+#define BUTTONGND 39
 
 void ejectTile() {
   positions[0] = 150;
@@ -38,9 +47,9 @@ void ejectTile() {
 
   steppers.moveTo(positions);
 
-  stepper1.setSpeed(35);
-  stepper2.setSpeed(35);
-  stepper3.setSpeed(35);
+  stepper1.setSpeed(SPEED);
+  stepper2.setSpeed(SPEED);
+  stepper3.setSpeed(SPEED);
 
   steppers.runSpeedToPosition(); // Blocks until all are in position
 
@@ -53,35 +62,59 @@ void ejectTile() {
   stepper3.setCurrentPosition(0);
 }
 
+void enableDriveMotors() {
+  digitalWrite(MTR1RELAY, HIGH);
+  digitalWrite(MTR2RELAY, HIGH);
+}
+
+void disableDriveMotors() {
+  digitalWrite(MTR1RELAY, LOW);
+  digitalWrite(MTR2RELAY, LOW);
+}
+
 void setup() {
+  pinMode(BUTTON, INPUT_PULLUP);
+  pinMode(RELAY5V, OUTPUT);
+  pinMode(RELAYGND, OUTPUT);
+  pinMode(BUTTON5V, OUTPUT);
+  pinMode(MTR1RELAY, OUTPUT);
+  pinMode(MTR2RELAY, OUTPUT);
+
+  digitalWrite(RELAY5V, HIGH);
+  digitalWrite(RELAYGND, LOW);
+  digitalWrite(BUTTONGND, LOW);
+
   SabertoothTXPinSerial.begin(9600);
-  stepper1.setMaxSpeed(35);
-  stepper1.setAcceleration(10);
+
+  stepper1.setMaxSpeed(SPEED);
+  stepper1.setAcceleration(ACCELERATION);
   stepper1.setEnablePin(25);
-  stepper1.setMinPulseWidth(60);
+  stepper1.setMinPulseWidth(PULSEWIDTH);
 
-  stepper2.setMaxSpeed(35);
-  stepper2.setAcceleration(10);
+  stepper2.setMaxSpeed(SPEED);
+  stepper2.setAcceleration(ACCELERATION);
   stepper2.setEnablePin(29);
-  stepper2.setMinPulseWidth(60);
+  stepper2.setMinPulseWidth(PULSEWIDTH);
 
-  stepper3.setMaxSpeed(35);
-  stepper3.setAcceleration(10);
+  stepper3.setMaxSpeed(SPEED);
+  stepper3.setAcceleration(ACCELERATION);
   stepper3.setEnablePin(33);
-  stepper3.setMinPulseWidth(60);
+  stepper3.setMinPulseWidth(PULSEWIDTH);
 
   steppers.addStepper(stepper1);
   steppers.addStepper(stepper2);
   steppers.addStepper(stepper3);
 
-  ST.motor(1, POWER);
-  ST.motor(2, POWER);
-  ejectTile();
-  delay(1000);
-  ST.motor(1, 0);
-  ST.motor(2, 0);
+
 }
 
 void loop() {
-  //code executed in setup()
+if (digitalRead(BUTTON) == LOW) {
+    ST.motor(1, POWER);
+    ST.motor(2, POWER);
+    ejectTile();
+    delay(1000);
+    ST.motor(1, 0);
+    ST.motor(2, 0);
+  }
 }
