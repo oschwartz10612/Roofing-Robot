@@ -24,65 +24,109 @@ AccelStepper stepper3(AccelStepper::DRIVER, 30, 31);
 MultiStepper steppers;
 
 long positions[3];
+int timeout1 = 1000;
+int timeout2 = -5000;
+int power = -18;
+boolean toggle = false;
 
-#define POWER 50
 #define SPEED 35
 #define PULSEWIDTH 60
 #define ACCELERATION 10
-#define MTR1RELAY 35
-#define MTR2RELAY 36
-#define RELAYGND 34
-#define RELAY5V 37
-#define BUTTON 38
-#define BUTTONGND 39
+#define MTR1RELAY 44
+#define MTR2RELAY 45
+#define BUTTON 46
+#define BUTTONGND 47
+#define SENSOR 0
+
+void enableBreak() {
+  digitalWrite(MTR1RELAY, HIGH);
+  digitalWrite(MTR2RELAY, HIGH);
+}
+
+void disableBreak() {
+  digitalWrite(MTR1RELAY, LOW);
+  digitalWrite(MTR2RELAY, LOW);
+}
 
 void ejectTile() {
-  positions[0] = 150;
-  positions[1] = 370;
-  positions[2] = 470;
+  //Serial.begin(9600); //for debugging
 
   stepper1.enableOutputs();
   stepper2.enableOutputs();
   stepper3.enableOutputs();
 
-  steppers.moveTo(positions);
 
   stepper1.setSpeed(SPEED);
   stepper2.setSpeed(SPEED);
   stepper3.setSpeed(SPEED);
 
-  steppers.runSpeedToPosition(); // Blocks until all are in position
+  while (analogRead(SENSOR) > 50) {
+    stepper1.runSpeed();
+    stepper2.runSpeed();
+    stepper3.runSpeed();
+    if (digitalRead(BUTTON) == LOW) {
+      ST.motor(1, 0);
+      ST.motor(2, 0);
+      enableBreak();
+      toggle = false;
+      break;
+    }
+    delay(1);
+  }
+
+  for (size_t i = 0; i < 1000; i++) {
+    stepper1.runSpeed();
+    stepper2.runSpeed();
+    stepper3.runSpeed();
+    delay(1);
+  }
+
+  disableBreak();
+  ST.motor(1, power);
+  ST.motor(2, power);
+
+  timeout1 = 4000;
+  timeout2 = 8000;
+  while (analogRead(SENSOR) < 300) {
+    if (timeout1 != 0) {
+      stepper1.runSpeed();
+      timeout1--;
+    }
+    if (timeout2 != 0) {
+      stepper2.runSpeed();
+      timeout2--;
+    }
+    stepper3.runSpeed();
+    if (digitalRead(BUTTON) == LOW) {
+      ST.motor(1, 0);
+      ST.motor(2, 0);
+      enableBreak();
+      toggle = false;
+      break;
+    }
+    delay(1);
+  }
+
+  delay(1000);
+
+  ST.motor(1, 0);
+  ST.motor(2, 0);
+  enableBreak();
 
   stepper1.disableOutputs();
   stepper2.disableOutputs();
   stepper3.disableOutputs();
-
-  stepper1.setCurrentPosition(0);
-  stepper2.setCurrentPosition(0);
-  stepper3.setCurrentPosition(0);
-}
-
-void enableDriveMotors() {
-  digitalWrite(MTR1RELAY, HIGH);
-  digitalWrite(MTR2RELAY, HIGH);
-}
-
-void disableDriveMotors() {
-  digitalWrite(MTR1RELAY, LOW);
-  digitalWrite(MTR2RELAY, LOW);
 }
 
 void setup() {
   pinMode(BUTTON, INPUT_PULLUP);
-  pinMode(RELAY5V, OUTPUT);
-  pinMode(RELAYGND, OUTPUT);
-  pinMode(BUTTON5V, OUTPUT);
+  pinMode(BUTTONGND, OUTPUT);
   pinMode(MTR1RELAY, OUTPUT);
   pinMode(MTR2RELAY, OUTPUT);
 
-  digitalWrite(RELAY5V, HIGH);
-  digitalWrite(RELAYGND, LOW);
   digitalWrite(BUTTONGND, LOW);
+
+  enableBreak();
 
   SabertoothTXPinSerial.begin(9600);
 
@@ -104,17 +148,31 @@ void setup() {
   steppers.addStepper(stepper1);
   steppers.addStepper(stepper2);
   steppers.addStepper(stepper3);
-
-
 }
 
 void loop() {
 if (digitalRead(BUTTON) == LOW) {
-    ST.motor(1, POWER);
-    ST.motor(2, POWER);
-    ejectTile();
-    delay(1000);
-    ST.motor(1, 0);
-    ST.motor(2, 0);
+    delay(2000);
+    if (digitalRead(BUTTON) == LOW) {
+      while (digitalRead(BUTTON) == LOW) {
+        disableBreak();
+        ST.motor(1, 70);
+        ST.motor(2, 70);
+      }
+      ST.motor(1, 0);
+      ST.motor(2, 0);
+      enableBreak();
+    }else {
+      if (toggle == true) {
+        toggle = false;
+      } else {
+        toggle = true;
+      }
+    }
   }
+  if (toggle == true) {
+    ejectTile();
+  }
+
+  delay(10);
 }
