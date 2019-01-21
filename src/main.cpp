@@ -4,18 +4,7 @@
 
 #include <SabertoothSimplified.h>
 
-SabertoothSimplified ST; // We'll name the Sabertooth object ST.
-                         // For how to configure the Sabertooth, see the DIP Switch Wizard for
-                         //   http://www.dimensionengineering.com/datasheets/SabertoothDIPWizard/start.htm
-                         // Be sure to select Simplified Serial Mode for use with this library.
-                         // This sample uses a baud rate of 9600.
-                         //
-                         // Connections to make:
-                         //   Arduino TX->1  ->  Sabertooth S1
-                         //   Arduino GND    ->  Sabertooth 0V
-                         //   Arduino VIN    ->  Sabertooth 5V (OPTIONAL, if you want the Sabertooth to power the Arduino)
-                         //
-                         // If you want to use a pin other than TX->1, see the SoftwareSerial example.
+SabertoothSimplified ST;
 
 AccelStepper stepper1(AccelStepper::DRIVER, 22, 23);
 AccelStepper stepper2(AccelStepper::DRIVER, 26, 27);
@@ -24,8 +13,9 @@ AccelStepper stepper3(AccelStepper::DRIVER, 30, 31);
 MultiStepper steppers;
 
 long positions[3];
-int timeout1 = 1000;
-int timeout2 = -5000;
+int timeout1 = 0;
+int timeout2 = 0;
+int timeout3 = 0;
 int power = -18;
 boolean toggle = false;
 
@@ -85,8 +75,9 @@ void ejectTile() {
   ST.motor(1, power);
   ST.motor(2, power);
 
-  timeout1 = 4000;
-  timeout2 = 8000;
+  timeout1 = 5000;
+  timeout2 = 18000;
+  timeout3 = 14000;
   while (analogRead(SENSOR) < 300) {
     if (timeout1 != 0) {
       stepper1.runSpeed();
@@ -96,7 +87,10 @@ void ejectTile() {
       stepper2.runSpeed();
       timeout2--;
     }
-    stepper3.runSpeed();
+    if (timeout3 != 0) {
+      stepper3.runSpeed();
+      timeout3--;
+    }
     if (digitalRead(BUTTON) == LOW) {
       ST.motor(1, 0);
       ST.motor(2, 0);

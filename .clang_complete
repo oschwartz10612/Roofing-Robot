@@ -1,10 +1,10 @@
 -I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/cores/arduino
 -I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/variants/mega
--I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/AccelStepper-1.58.0/src
--I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/SabertoothSimplified
--I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/Sabertooth
--I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/SyRenSimplified
--I/Users/owenschwartz/Google Drive/Documents/robot/code/lib/USBSabertooth
+-I/Users/owenschwartz/Google Drive/Documents/Science Fair 2019/Roofing-Robot/lib/AccelStepper-1.58.0/src
+-I/Users/owenschwartz/Google Drive/Documents/Science Fair 2019/Roofing-Robot/lib/SabertoothSimplified
+-I/Users/owenschwartz/Google Drive/Documents/Science Fair 2019/Roofing-Robot/lib/Sabertooth
+-I/Users/owenschwartz/Google Drive/Documents/Science Fair 2019/Roofing-Robot/lib/SyRenSimplified
+-I/Users/owenschwartz/Google Drive/Documents/Science Fair 2019/Roofing-Robot/lib/USBSabertooth
 -I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src
 -I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src
 -I/Users/owenschwartz/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src
@@ -35,8 +35,8 @@
 -I/Users/owenschwartz/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
 -I/Users/owenschwartz/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
 -I/Users/owenschwartz/.platformio/packages/tool-unity
--I/Users/owenschwartz/Google Drive/Documents/robot/code/include
--I/Users/owenschwartz/Google Drive/Documents/robot/code/src
+-I/Users/owenschwartz/Google Drive/Documents/Science Fair 2019/Roofing-Robot/include
+-I/Users/owenschwartz/Google Drive/Documents/Science Fair 2019/Roofing-Robot/src
 -DPLATFORMIO=30603
 -DARDUINO_AVR_MEGA2560
 -DF_CPU=16000000L
